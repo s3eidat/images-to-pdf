@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; media-src 'self' data: blob:; connect-src 'self' data: blob:; worker-src 'self' blob:; manifest-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Images to PDF — Convert JPG, PNG &amp; WebP to PDF, Free &amp; Private | S3eidat Tools</title>
+<meta name="description" content="Turn photos and scans into one PDF in your browser. JPG, PNG, WebP; drag to reorder, A4, Letter or fit-to-image pages, margins and compression. Free, no upload.">
+<meta property="og:title" content="Images to PDF — free, private image to PDF converter">
+<meta property="og:description" content="Photos and scans into one PDF with page size, margins and compression. Runs 100% in your browser.">
+<meta property="og:image" content="screenshot.png">
+<link rel="icon" href="kit/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="kit/kit.css">
+<link rel="stylesheet" href="app.css">
+<script src="kit/kit.js"></script>
+<script src="lib/pdf-lib.min.js"></script>
+</head>
+<body data-tool="images-to-pdf">
+<main class="s3-main">
+  <section class="s3-hero">
+    <h1>Images to PDF</h1>
+    <p>Turn photos, scans and screenshots into one PDF. Put them in order, pick a page size, and you're done. Nothing is uploaded.</p>
+  </section>
+
+  <div class="ip-layout">
+    <section class="card">
+      <label class="drop" id="drop">
+        <input type="file" accept="image/*" multiple hidden>
+        <svg class="i"><use href="#i-image"/></svg>
+        <b>Drop images here</b>
+        <span>JPG, PNG, WebP, GIF, BMP. Click to choose, or paste with <kbd>Ctrl</kbd>+<kbd>V</kbd>.</span>
+      </label>
+      <div class="row between mt" id="listHead" hidden>
+        <h2>Pages <small id="count"></small></h2>
+        <div class="row">
+          <button class="btn ghost small" id="sortName">Sort by name</button>
+          <button class="btn ghost small" id="clear"><svg class="i"><use href="#i-trash"/></svg>Clear</button>
+        </div>
+      </div>
+      <div class="ip-grid" id="grid"></div>
+      <p class="faint" id="tip" hidden>Drag to reorder. Use ⟳ to turn a sideways photo.</p>
+    </section>
+
+    <section class="card ip-side">
+      <h2>PDF settings</h2>
+      <div class="stack">
+        <div class="field"><span>Page size</span>
+          <div class="seg" id="size" role="group" aria-label="Page size">
+            <button aria-pressed="true" data-v="a4">A4</button>
+            <button aria-pressed="false" data-v="letter">Letter</button>
+            <button aria-pressed="false" data-v="fit">Fit image</button>
+          </div>
+        </div>
+        <div class="field" id="orientWrap"><span>Orientation</span>
+          <div class="seg" id="orient" role="group" aria-label="Orientation">
+            <button aria-pressed="true" data-v="auto">Auto</button>
+            <button aria-pressed="false" data-v="portrait">Portrait</button>
+            <button aria-pressed="false" data-v="landscape">Landscape</button>
+          </div>
+        </div>
+        <label class="field"><span>Margin: <span id="marginVal">10</span> mm</span><input type="range" id="margin" min="0" max="40" step="1" value="10"></label>
+        <label class="field">Image quality
+          <select class="select" id="quality">
+            <option value="original">Original (no re-compression when possible)</option>
+            <option value="high" selected>High (JPEG 90%, max 3000 px)</option>
+            <option value="medium">Medium (JPEG 75%, max 2000 px)</option>
+            <option value="small">Small file (JPEG 60%, max 1400 px)</option>
+          </select>
+        </label>
+        <label class="field">File name<input class="input" id="outName" value="images.pdf" spellcheck="false" dir="auto"></label>
+        <button class="btn primary big" id="make" disabled><svg class="i"><use href="#i-download"/></svg>Create PDF</button>
+        <p class="faint" id="result"></p>
+      </div>
+    </section>
+  </div>
+</main>
+<script src="app.js"></script>
+</body>
+</html>

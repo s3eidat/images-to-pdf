@@ -1,0 +1,26 @@
+.ip-layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 14px; align-items: start; }
+@media (max-width: 860px) { .ip-layout { grid-template-columns: minmax(0, 1fr); } }
+.ip-side { position: sticky; top: 76px; }
+@media (max-width: 860px) { .ip-side { position: static; } }
+.ip-side .seg { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.ip-side .seg button { padding: 6px 4px; }
+.ip-side .btn.big { width: 100%; }
+#orientWrap.off { opacity: .45; }
+.drop.compact { padding: 16px; }
+.ip-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px; margin-top: 10px; }
+.ip-grid:empty { display: none; }
+.ip-tile { position: relative; display: grid; gap: 4px; padding: 8px; border-radius: 12px; background: var(--surface-2); border: 2px solid transparent; cursor: grab; transition: border-color var(--dur), opacity var(--dur); min-width: 0; }
+.ip-tile:hover { border-color: var(--line-strong); }
+.ip-tile.err { border-color: var(--danger-soft); }
+.ip-tile.dragging { opacity: .4; }
+.ip-tile.ins-l { box-shadow: -5px 0 0 -1px var(--accent); }
+.ip-tile.ins-r { box-shadow: 5px 0 0 -1px var(--accent); }
+.ip-thumb { position: relative; display: grid; place-items: center; aspect-ratio: 1; border-radius: 8px; overflow: hidden; background: var(--surface-3); }
+.ip-thumb img { max-width: 92%; max-height: 92%; object-fit: contain; transition: transform var(--dur) var(--ease); box-shadow: 0 2px 10px rgba(0,0,0,.25); }
+.ip-num { position: absolute; top: 6px; left: 6px; min-width: 22px; height: 22px; padding: 0 6px; border-radius: 7px; display: grid; place-items: center; background: var(--accent); color: var(--accent-ink); font-size: 12px; font-weight: 700; }
+.ip-name { font-size: 12.5px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ip-meta { font-size: 11.5px; }
+.ip-err { color: var(--danger); font-size: 12px; }
+.ip-acts { display: flex; justify-content: space-between; }
+.ip-acts .btn { width: 28px; height: 28px; font-size: 13px; }
+.ip-side div.field { display: grid; gap: 6px; font-size: 12.5px; font-weight: 600; color: var(--text-2); }
